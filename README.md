@@ -96,11 +96,55 @@ APIs to perform CRUD operations and manage relationships between entities.
     python3 run.py
     ```
 
-7. **Run Tests**
+
+
+## 7 Testing
+
+The application includes a comprehensive test suite using `pytest` to ensure all API endpoints function as expected.
+
+### Running Tests
+
+1. **Navigate to the Tests Directory**
 
     ```bash
-    pytest
+    cd tests
     ```
+
+2. **Run the Test Suite**
+
+    ```bash
+    pytest test_api.py -v
+    ```
+
+### Sample Test Output
+
+```bash
+============================= test session starts ==============================
+platform linux -- Python 3.11.11, pytest-8.3.4, pluggy-1.5.0
+cachedir: .pytest_cache
+rootdir: /home/bob/PycharmProjects/Foxtask10/student_management/tests
+plugins: Faker-35.0.0
+collected 16 items
+
+test_api.py::test_create_group PASSED                                    [  6%]
+test_api.py::test_get_groups PASSED                                      [ 12%]
+test_api.py::test_get_group_students PASSED                              [ 18%]
+test_api.py::test_get_groups_with_max_students PASSED                    [ 25%]
+test_api.py::test_create_student PASSED                                  [ 31%]
+test_api.py::test_get_students PASSED                                    [ 37%]
+test_api.py::test_get_student_details PASSED                             [ 43%]
+test_api.py::test_update_student PASSED                                  [ 50%]
+test_api.py::test_add_student_to_course PASSED                           [ 56%]
+test_api.py::test_remove_student_from_course PASSED                      [ 62%]
+test_api.py::test_create_course PASSED                                   [ 68%]
+test_api.py::test_get_courses PASSED                                     [ 75%]
+test_api.py::test_get_course_details PASSED                              [ 81%]
+test_api.py::test_update_course PASSED                                   [ 87%]
+test_api.py::test_delete_course PASSED                                   [ 93%]
+test_api.py::test_get_students_by_course_name PASSED                     [100%]
+
+============================== 16 passed in 0.78s ===============================
+```
 
 ## API Endpoints
 
@@ -452,52 +496,4 @@ curl -X DELETE http://localhost:5000/courses/1
 {
   "message": "Course deleted successfully"
 }
-```
-
-## Testing
-
-The application includes a comprehensive test suite using `pytest` to ensure all API endpoints function as expected.
-
-### Running Tests
-
-1. **Navigate to the Tests Directory**
-
-    ```bash
-    cd student_management/tests
-    ```
-
-2. **Run the Test Suite**
-
-    ```bash
-    pytest test_api.py -v
-    ```
-
-### Sample Test Output
-
-```bash
-============================= test session starts ==============================
-platform linux -- Python 3.11.11, pytest-8.3.4, pluggy-1.5.0
-cachedir: .pytest_cache
-rootdir: /home/bob/PycharmProjects/Foxtask10/student_management/tests
-plugins: Faker-35.0.0
-collected 16 items
-
-test_api.py::test_create_group PASSED                                    [  6%]
-test_api.py::test_get_groups PASSED                                      [ 12%]
-test_api.py::test_get_group_students PASSED                              [ 18%]
-test_api.py::test_get_groups_with_max_students PASSED                    [ 25%]
-test_api.py::test_create_student PASSED                                  [ 31%]
-test_api.py::test_get_students PASSED                                    [ 37%]
-test_api.py::test_get_student_details PASSED                             [ 43%]
-test_api.py::test_update_student PASSED                                  [ 50%]
-test_api.py::test_add_student_to_course PASSED                           [ 56%]
-test_api.py::test_remove_student_from_course PASSED                      [ 62%]
-test_api.py::test_create_course PASSED                                   [ 68%]
-test_api.py::test_get_courses PASSED                                     [ 75%]
-test_api.py::test_get_course_details PASSED                              [ 81%]
-test_api.py::test_update_course PASSED                                   [ 87%]
-test_api.py::test_delete_course PASSED                                   [ 93%]
-test_api.py::test_get_students_by_course_name PASSED                     [100%]
-
-============================== 16 passed in 0.78s ===============================
 ```
