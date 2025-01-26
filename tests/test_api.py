@@ -2,11 +2,9 @@ import pytest
 import requests
 import uuid
 
-# Base URL of the API
 BASE_URL = "http://localhost:5000"
 
 
-# Helper function to generate unique names using UUID
 def generate_unique_name(prefix):
     return f"{prefix}-{uuid.uuid4()}"
 

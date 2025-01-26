@@ -1,10 +1,7 @@
-# app/models.py
-
 from sqlalchemy import Table, Column, Integer, ForeignKey, String, Text
 from sqlalchemy.orm import relationship
 from .database import Base
 
-# Association table for the many-to-many relationship between students and courses
 student_courses = Table(
     'student_courses',
     Base.metadata,

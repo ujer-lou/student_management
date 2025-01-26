@@ -1,9 +1,7 @@
-# app/routes.py
-
 from flask_restful import Resource, Api, reqparse
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import joinedload
-from flask import abort
+
 from .database import SessionLocal
 from .models import Group, Student, Course
 from .services import (
@@ -35,6 +33,7 @@ class GroupListResource(Resource):
     """
     Resource for handling operations on the collection of groups.
     """
+
     def get(self):
         session = SessionLocal()
         try:
@@ -65,6 +64,7 @@ class StudentListResource(Resource):
     """
     Resource for handling operations on the collection of students.
     """
+
     def get(self):
         parser = reqparse.RequestParser()
         parser.add_argument('course', type=str, location='args', help='Filter by course name')
@@ -131,10 +131,12 @@ class StudentResource(Resource):
     """
     Resource for handling operations on individual students.
     """
+
     def get(self, student_id):
         session = SessionLocal()
         try:
-            student = session.query(Student).options(joinedload(Student.courses)).filter(Student.id == student_id).first()
+            student = session.query(Student).options(joinedload(Student.courses)).filter(
+                Student.id == student_id).first()
             if not student:
                 return {'message': 'Student not found'}, 404
             return {
@@ -195,6 +197,7 @@ class CourseListResource(Resource):
     """
     Resource for handling operations on the collection of courses.
     """
+
     def get(self):
         session = SessionLocal()
         try:
@@ -226,6 +229,7 @@ class CourseResource(Resource):
     """
     Resource for handling operations on individual courses.
     """
+
     def get(self, course_id):
         session = SessionLocal()
         try:
@@ -278,6 +282,7 @@ class StudentCourseResource(Resource):
     """
     Resource for handling the association between students and courses.
     """
+
     def post(self, student_id, course_id):
         session = SessionLocal()
         try:
@@ -305,6 +310,7 @@ class GroupStudentsResource(Resource):
     """
     Resource for retrieving all students within a specific group.
     """
+
     def get(self, group_id):
         session = SessionLocal()
         try:
@@ -327,9 +333,11 @@ class GroupWithMaxStudentsResource(Resource):
     """
     Resource for retrieving groups with a student count less than or equal to a specified maximum.
     """
+
     def get(self):
         parser = reqparse.RequestParser()
-        parser.add_argument('max_count', type=int, required=True, help='max_count is required and must be an integer', location='args')
+        parser.add_argument('max_count', type=int, required=True, help='max_count is required and must be an integer',
+                            location='args')
         args = parser.parse_args()
         if args['max_count'] < 0:
             return {'message': 'max_count must be a non-negative integer'}, 400
@@ -353,6 +361,7 @@ class StudentsByCourseResource(Resource):
     """
     Resource for retrieving all students enrolled in a specific course by course name.
     """
+
     def get(self, course_name):
         session = SessionLocal()
         try:

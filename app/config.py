@@ -2,7 +2,9 @@ import os
 
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
+"""
+Load variables from .env YOU SHOULD CREATE .ENV IF YOU DON'T BIG PROBLEMS WILL HAPPEN 😀 just kidding dont forget to create .env
+"""
 load_dotenv()
 
 
