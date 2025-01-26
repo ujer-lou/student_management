@@ -3,8 +3,8 @@ import string
 
 from faker import Faker
 
-from app.database import SessionLocal, engine
-from app.models import Base, Group, Student, Course
+from student_management.app.database import SessionLocal, engine
+from student_management.app.models import Base, Group, Student, Course
 
 fake = Faker()
 
